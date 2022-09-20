@@ -13,7 +13,7 @@ const PageContainer = ({ children }) => {
       <Div className={cx('flex flex--dir--col min-height-vh-full flex--jc--between')}>
         <Div>
           <Header />
-          <Div>{children}</Div>
+          <Div className="p2">{children}</Div>
         </Div>
         <Footer />
       </Div>

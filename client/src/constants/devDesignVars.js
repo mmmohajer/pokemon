@@ -1,8 +1,10 @@
 export const LIST_OF_ICONS = [
   'angleDoubleLeft',
   'angleDoubleRight',
+  'angleDown',
   'angleLeft',
   'angleRight',
+  'angleUp',
   'certificate',
   'check-mark',
   'close',
@@ -20,6 +22,7 @@ export const LIST_OF_ICONS = [
   'phone',
   'quoteLeft',
   'rotate',
+  'save',
   'search',
   'youtube'
 ];

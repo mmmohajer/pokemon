@@ -43,7 +43,7 @@ const Header = () => {
       )}
       <Div type="flex" vAlign="center" distributedBetween className="pr2 pt1 pb1 bgThemeThree">
         <Div type="flex" vAlign="center" className="ml3 textWhite">
-          Base Design
+          Doc Talk
         </Div>
 
         {/* DESKTOP NAVBAR */}
