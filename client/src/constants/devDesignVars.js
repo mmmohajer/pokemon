@@ -27,7 +27,7 @@ export const LIST_OF_ICONS = [
   'youtube'
 ];
 
-export const ANCHOR_TYPES = [1, 2, 3];
+export const ANCHOR_TYPES = [0, 1, 2, 3];
 
 export const BUTTON_TYPES = [1, 2, 3];
 

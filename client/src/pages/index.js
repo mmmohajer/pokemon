@@ -12,7 +12,7 @@ import SavedPokemons from '@/components/SavedPokemons';
 import styles from './index.module.scss';
 
 const Index = () => {
-  const [showFromDB, setShowFromDB] = useState([]);
+  const [showFromDB, setShowFromDB] = useState(false);
 
   return (
     <PublicRoute>
