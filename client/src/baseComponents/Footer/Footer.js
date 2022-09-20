@@ -14,7 +14,7 @@ const Footer = () => {
         className={cx('textWhite bgThemeTwo fs-px-14 p1')}>
         © 2022 Top Family | All Rights Reserved | Powered by
         <a href="https://www.iswad.tech" className={cx('flex flex--jc--center ml1 textWhite')}>
-          ISWAD
+          Mohammad Mohajer
         </a>
       </Div>
     </>

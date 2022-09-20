@@ -56,7 +56,7 @@ export const prepareData = async (dispatch, pokemones, setPreparedData) => {
 export const savePokemonHandler = (pokemon, setBodyData, setSendSavePokemonReq) => {
   setBodyData({
     name: pokemon.name,
-    type: pokemon.types.sort(),
+    types: pokemon.types.sort(),
     image_url: pokemon.image_url
   });
   setSendSavePokemonReq(true);

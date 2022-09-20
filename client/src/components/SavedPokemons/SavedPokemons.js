@@ -3,58 +3,45 @@ import cx from 'classnames';
 import { useDispatch } from 'react-redux';
 import { Div, Image } from 'basedesign-iswad';
 
-import Icon from '@/baseComponents/Icon';
 import Scroll from '@/baseComponents/Scroll';
 import Table from '@/baseComponents/Table';
 
-import { COLORS } from '@/constants/vars';
 import { POKEMON_API_ROUTE } from '@/constants/apiRoutes';
-import { addAlertItem } from '@/utils/notifications';
 import useApiCalls from '@/hooks/useApiCalls';
 
-import { getAllPokemons, prepareData, savePokemonHandler, headLines } from './utils';
+import { headLines } from './utils';
 import { SCROLLABLE_ELEMENT_ID, SCROLLABLE_CONTENT_ID } from './constants';
-import styles from './Pokemon.module.scss';
+import styles from './SavedPokemons.module.scss';
 
-const Pokemon = () => {
+const SavedPokemons = () => {
   const dispatch = useDispatch();
 
   const [pokemones, setPokemones] = useState([]);
-  const [preparedData, setPreparedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [updateRefs, setUpdateRefs] = useState(true);
-  const [bodyData, setBodyData] = useState(true);
 
-  useEffect(() => {
-    getAllPokemons(dispatch, setPokemones);
-  }, []);
-
-  useEffect(() => {
-    if (pokemones?.length) {
-      prepareData(dispatch, pokemones, setPreparedData);
-    }
-  }, [pokemones]);
-
-  const [sendSavePokemonReq, setSendSavePokemonReq] = useState(false);
-  const { data: saveData, error: saveError } = useApiCalls({
-    sendReq: sendSavePokemonReq,
-    setSendReq: setSendSavePokemonReq,
-    method: 'POST',
+  const [sendGetPokemonReq, setSendGetPokemonReq] = useState(false);
+  const { data: pokemonData, error: pokemonError } = useApiCalls({
+    sendReq: sendGetPokemonReq,
+    setSendReq: setSendGetPokemonReq,
+    method: 'GET',
     url: POKEMON_API_ROUTE,
-    bodyData,
     showLoading: true
   });
   useEffect(() => {
-    if (saveData) {
-      console.log(saveData);
-      addAlertItem(dispatch, 'Pokemon has been successfully added.', 'success');
+    if (pokemonData) {
+      setPokemones(pokemonData);
     }
-  }, [saveData]);
+  }, [pokemonData]);
+
+  useEffect(() => {
+    setSendGetPokemonReq(true);
+  }, []);
 
   const data = useMemo(() => {
-    if (preparedData?.length) {
+    if (pokemones?.length) {
       const localData = [];
-      preparedData.forEach((item) => {
+      pokemones.forEach((item) => {
         let currentDetails = {
           name: item.name
         };
@@ -82,26 +69,12 @@ const Pokemon = () => {
             </Div>
           )
         };
-        currentDetails['button'] = {
-          value: item.name,
-          display: (
-            <Div type="flex" hAlign="start" vAlign="center" className="w-per-100">
-              <Icon
-                type="save"
-                scale={1.75}
-                className="w-px-40 height-px-40 flex flex--jc--center flex--ai--center mouse-hand"
-                color={COLORS.primary}
-                onClick={() => savePokemonHandler(item, setBodyData, setSendSavePokemonReq)}
-              />
-            </Div>
-          )
-        };
         localData.push(currentDetails);
       });
       return localData;
     }
     return [];
-  }, [preparedData]);
+  }, [pokemones]);
 
   return (
     <>
@@ -136,4 +109,4 @@ const Pokemon = () => {
   );
 };
 
-export default Pokemon;
+export default SavedPokemons;
