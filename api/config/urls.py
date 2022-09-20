@@ -14,6 +14,7 @@ urlpatterns = [
     path('api/auth/', include('djoser.urls.jwt')),
     path('api/', include('core.urls')),
     path('api/', include('like.urls')),
+    path('api/', include('app.urls')),
     path('api/swagger/', schema_view),
 ]
 

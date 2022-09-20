@@ -9,8 +9,11 @@ import Scroll from '@/baseComponents/Scroll';
 import Table from '@/baseComponents/Table';
 
 import { COLORS } from '@/constants/vars';
+import { POKEMON_API_ROUTE } from '@/constants/apiRoutes';
+import { addAlertItem } from '@/utils/notifications';
+import useApiCalls from '@/hooks/useApiCalls';
 
-import { getAllPokemons, prepareData, headLines } from './utils';
+import { getAllPokemons, prepareData, savePokemonHandler, headLines } from './utils';
 import { SCROLLABLE_ELEMENT_ID, SCROLLABLE_CONTENT_ID } from './constants';
 import styles from './Pokemon.module.scss';
 
@@ -21,6 +24,7 @@ const Pokemon = () => {
   const [preparedData, setPreparedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [updateRefs, setUpdateRefs] = useState(true);
+  const [bodyData, setBodyData] = useState(true);
 
   useEffect(() => {
     getAllPokemons(dispatch, setPokemones);
@@ -31,6 +35,22 @@ const Pokemon = () => {
       prepareData(dispatch, pokemones, setPreparedData);
     }
   }, [pokemones]);
+
+  const [sendSavePokemonReq, setSendSavePokemonReq] = useState(false);
+  const { data: saveData, error: saveError } = useApiCalls({
+    sendReq: sendSavePokemonReq,
+    setSendReq: setSendSavePokemonReq,
+    method: 'POST',
+    url: POKEMON_API_ROUTE,
+    bodyData,
+    showLoading: true
+  });
+  useEffect(() => {
+    if (saveData) {
+      console.log(saveData);
+      addAlertItem(dispatch, 'Pokemon has been successfully added.', 'success');
+    }
+  }, [saveData]);
 
   const data = useMemo(() => {
     if (preparedData?.length) {
@@ -72,6 +92,7 @@ const Pokemon = () => {
                 scale={1.75}
                 className="w-px-40 height-px-40 flex flex--jc--center flex--ai--center mouse-hand"
                 color={COLORS.primary}
+                onClick={() => savePokemonHandler(item, setBodyData, setSendSavePokemonReq)}
               />
             </Div>
           )
@@ -112,6 +133,9 @@ const Pokemon = () => {
           </Div>
         </Div>
       </Scroll>
+      <Div type="flex" hAlign="center" vAlign="center" className="mt3">
+        <Button className="w-px-200">Pokemons In Database</Button>
+      </Div>
     </>
   );
 };
