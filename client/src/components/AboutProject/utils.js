@@ -2,13 +2,13 @@ export const QAs = (Div, Anchor) => {
   return [
     {
       Question:
-        'Why do I see multiple extra components, like Login, Register, and etc., whicj are not required for this project?',
+        'Why do I see multiple extra components, like Login, Register, and etc., which are not required for this project?',
       Answer: (
         <Div>
           This project consists of multiple reusable components, which are not 100% related to the
-          Pokemon assignment. The reason why you see these volumes of extra work is that I use a lot
-          of these reusable components and endpoints to initiate a scalable from scratch project as
-          quickly as possible
+          Pokemon assignment. The reason why you see them is that I use a lot of these reusable
+          components and endpoints to initiate a scalable from scratch project as quickly as
+          possible
         </Div>
       )
     },
@@ -24,7 +24,7 @@ export const QAs = (Div, Anchor) => {
       )
     },
     {
-      Question: 'Where I can see the specific front-end components related to this project?',
+      Question: 'Where can I see the specific front-end components related to this project?',
       Answer: (
         <Div>
           There are two main components to build the front-end of this project:
@@ -57,7 +57,8 @@ export const QAs = (Div, Anchor) => {
       Question: 'Where I can see the specific api code related to this project?',
       Answer: (
         <Div>
-          In order to view all files and folders specifically designed for this project,{' '}
+          In order to view all files and folders specifically designed for the backend of this
+          project,{' '}
           <Anchor to="https://github.com/mmmohajer/pokemon/tree/master/api/app" internal={false}>
             click here
           </Anchor>
