@@ -12,7 +12,7 @@ import styles from './Index.module.scss';
 const Index = () => {
   return (
     <PublicRoute>
-      <Seo>
+      <Seo title="About Project | Pokemon App">
         <PageContainer pageIdentifier="about-project">
           <AboutProject />
         </PageContainer>
