@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <PublicRoute>
       <Seo>
-        <PageContainer>
+        <PageContainer pageIdentifier="home">
           {!showFromDB ? (
             <>
               <Pokemon />

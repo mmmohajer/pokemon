@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import cx from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 import { Div, HamburgerIcon } from 'basedesign-iswad';
+import Router from 'next/router';
 
 import { lgDesignSize, smDesignSize } from '@/constants/vars';
 import { toggleMobileNav } from '@/reducers/general/mobileNavIsActive';
@@ -29,7 +30,9 @@ const Header = () => {
         distributedBetween
         vAlign="center"
         className={cx('w-per-100 bgPrimary textWhite p2', styles.headerContainer)}>
-        <Div>DocTalk</Div>
+        <Div className="mouse-hand" onClick={() => Router.push('/')}>
+          Pokemon App
+        </Div>
         <Div type="flex" showIn={lgDesignSize}>
           <DesktopNav />
         </Div>

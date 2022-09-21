@@ -20,10 +20,10 @@ const DesktopNav = () => {
         {MENU_ITEMS?.map((item, idx) => (
           <Anchor href={item.to} key={idx} anchorType={0}>
             <NavItem
-              isActive={activeMenu === item.title}
+              isActive={activeMenu === item.identifier}
               className="p2 mouse-hand textWhite hover-bg-themeThree"
               activeClassName={cx(styles.activeDesktopNavItem)}
-              onClick={() => dispatch(setActiveMenu(item.title))}>
+              onClick={() => dispatch(setActiveMenu(item.identifier))}>
               {item.title}
             </NavItem>
           </Anchor>

@@ -13,7 +13,7 @@ const Index = () => {
   return (
     <PublicRoute>
       <Seo>
-        <PageContainer>
+        <PageContainer pageIdentifier="about-project">
           <AboutProject />
         </PageContainer>
       </Seo>

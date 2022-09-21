@@ -8,6 +8,7 @@ import { setActiveMenu } from '@/reducers/general/activeMenu';
 import { hideMobileNav } from '@/reducers/general/mobileNavIsActive';
 
 import Anchor from '@/baseComponents/Anchor';
+import AllPageClickable from '@/baseComponents/AllPageClickable';
 
 import styles from '../Header.module.scss';
 
@@ -18,6 +19,7 @@ const MobileNav = () => {
 
   return (
     <>
+      {mobileNavIsActive && <AllPageClickable onClick={() => dispatch(hideMobileNav())} />}
       <MobNav
         type="flex"
         className={cx(
@@ -27,11 +29,11 @@ const MobileNav = () => {
         {MENU_ITEMS?.map((item, idx) => (
           <Anchor href={item.to} key={idx} anchorType={0}>
             <MobNavItem
-              isActive={activeMenu === item.title}
+              isActive={activeMenu === item.identifier}
               className="p2 mouse-hand textWhite hover-bg-themeThree boxShaodwType1"
               activeClassName={cx(styles.activeMobileNavItem)}
               onClick={() => {
-                dispatch(setActiveMenu(item.title));
+                dispatch(setActiveMenu(item.identifier));
                 dispatch(hideMobileNav());
               }}>
               {item.title}
