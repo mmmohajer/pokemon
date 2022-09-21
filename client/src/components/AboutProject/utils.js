@@ -54,7 +54,7 @@ export const QAs = (Div, Anchor) => {
       )
     },
     {
-      Question: 'Where I can see the specific api code related to this project?',
+      Question: 'Where can I see the specific api code related to this project?',
       Answer: (
         <Div>
           In order to view all files and folders specifically designed for the backend of this
@@ -62,6 +62,25 @@ export const QAs = (Div, Anchor) => {
           <Anchor to="https://github.com/mmmohajer/pokemon/tree/master/api/app" internal={false}>
             click here
           </Anchor>
+        </Div>
+      )
+    },
+    {
+      Question: 'Why are you using Next.js instead of React Js?',
+      Answer: (
+        <Div>
+          Next JS is a framework that holds React on its base, it is also much more SEO friendly.
+          Actually, Next.js is the production ready platform for react applications.
+        </Div>
+      )
+    },
+    {
+      Question: 'What is the best way to contact you?',
+      Answer: (
+        <Div>
+          You can reach out by sending an email to{' '}
+          <span className="f-b">mmmohajer70@gmail.com</span> or calling me by{' '}
+          <span className="f-b">2269770855</span>
         </Div>
       )
     }

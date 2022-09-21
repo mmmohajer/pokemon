@@ -22,11 +22,11 @@ const Note = ({ question, answer, ...props }) => {
             hAlign="center"
             vAlign="center"
             className={cx(
-              'br-rad-per-50 p1 boxShadowType1 bgPrimary tranistion1 mouse-hand',
+              'br-rad-per-50 p1 boxShadowType1 bgPrimary tranistion1 mouse-hand w-px-30 height-px-30',
               showAnswer && styles.iconContainerActive
             )}
             onClick={() => setShowAnswer(!showAnswer)}>
-            <Icon type="angleDown" scale={1.2} color="white" />
+            <Icon type="angleDown" scale={1} color="white" />
           </Div>
         </Div>
         <Div
