@@ -46,7 +46,6 @@ const Pokemon = () => {
   });
   useEffect(() => {
     if (saveData) {
-      console.log(saveData);
       addAlertItem(dispatch, 'Pokemon has been successfully added.', 'success');
     }
   }, [saveData]);
