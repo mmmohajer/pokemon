@@ -1,7 +1,9 @@
 from celery.schedules import crontab
 import os
 
-CELERY_BROKER_URL = 'redis://:Mb3742870@redis:6379/1'
+REDIS_USER_PATH = os.environ.get('REDIS_USER_PATH', 'RedisUserPath')
+
+CELERY_BROKER_URL = f"redis://:{REDIS_USER_PATH}@redis:6379/1"
 
 CELERY_TIMEZONE = os.environ.get('API_TIME_ZONE', 'America/Toronto')
 

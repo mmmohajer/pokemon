@@ -4,6 +4,8 @@ ASGI_APPLICATION = 'config.asgi.application'
 
 WITHOUT_DOCKER = bool(int(os.environ.get('WITHOUT_DOCKER', 0)))
 
+REDIS_USER_PATH = os.environ.get('REDIS_USER_PATH', 'RedisUserPath')
+
 if WITHOUT_DOCKER:
     CHANNEL_LAYERS = {
         "default": {
@@ -16,7 +18,7 @@ if not WITHOUT_DOCKER:
         "default": {
             "BACKEND": "channels_redis.core.RedisChannelLayer",
             "CONFIG": {
-                "hosts": [("redis://:Mb3742870@redis:6379/1")],
+                "hosts": [(f"redis://:{REDIS_USER_PATH}@redis:6379/1")],
             },
         },
     }
