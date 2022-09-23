@@ -15,7 +15,7 @@ export const websocketApiRoute = (url) => {
   if (Boolean(parseInt(WITHOUT_DOCKER))) {
     return `ws://localhost:8000${url}`;
   } else {
-    if (PRODUCTION) {
+    if (!PRODUCTION) {
       return `ws://${APP_DOMAIN}${url}`;
     } else {
       return `wss://${APP_DOMAIN}${url}`;
